@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
-import random
 
 class Author(models.Model):
     username = models.CharField(max_length=33, unique=True, default='username')
@@ -13,7 +12,7 @@ class Author(models.Model):
 
     # change upper limit to infinity
     def save(self, *args, **kwargs):
-        self.username = '{}{}{}'.format(self.first_name, self.last_name, random.randint(1, 100))
+        self.username = '{}{}{}'.format(self.first_name, self.last_name, self.pk)
         super().save(*args, **kwargs)
 
 
