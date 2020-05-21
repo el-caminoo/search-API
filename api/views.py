@@ -15,6 +15,7 @@ class ViewPosts(APIView):
         serializer = CreatePostSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+        return Response(serializer.data)
 
 class PostDetails(APIView):
 
@@ -31,9 +32,9 @@ class PostDetails(APIView):
 
 # search for posts ....
 class FindPosts(APIView):
-    # filter tags for keyword
+    
     def get(self, request, format=None):
         query = request.GET.get('q', None)
-        posts = Post.objects.filter(pk=query)
+        posts = Post.objects.filter(tags__overlap=[query])
         serializer = CreatePostSerializer(posts, many=True)
         return Response(serializer.data)

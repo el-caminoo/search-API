@@ -11,7 +11,3 @@ PROD_SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEV_DEBUG = True
 PROD_DEBUG = False
-
-
-
-

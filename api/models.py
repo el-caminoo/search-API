@@ -24,7 +24,7 @@ class Post(models.Model):
     body = models.TextField()
     created = models.DateField(auto_now_add= True)
     modified = models.DateField(auto_now= True)
-    tags = ArrayField(models.CharField(max_length=33, default='tags')) # list of keywords
+    tags = ArrayField(models.CharField(max_length=33), blank=True, null=True) # list of keywords
     objects = models.manager
 
     def __str__(self):

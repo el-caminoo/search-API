@@ -5,7 +5,7 @@ from .models import Post, Author
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        exclude = ['author']
+        exclude = ['userId']
 
 class CreatePostSerializer(serializers.ModelSerializer):
     class Meta:
